@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 263386801}
   - component: {fileID: 263386803}
   - component: {fileID: 263386802}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,9 +84,9 @@ GameObject:
   - component: {fileID: -4410944921382984519}
   - component: {fileID: -5101265467191378889}
   - component: {fileID: 1570942133}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hero01
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

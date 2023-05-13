@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using CnqC.DGB;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IcomponentChecking
 
 {
     public float speed;
@@ -13,6 +13,11 @@ public class Enemy : MonoBehaviour
     private Player m_player;
     private Animator m_anim;
     private Rigidbody2D m_rb; // để những con quái di chuyển tới con hero thì phải thay đổi vận tốc của nó 
+
+    public bool IscomponentNull()
+    {
+        return m_anim == null || m_player == null || m_rb == null;
+    }
 
     private void Awake()
     {
@@ -34,11 +39,10 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (m_rb == null || m_player == null) return;  // nếu mà rb khác rỗng thì sẽ thay đổi vận tốc hoặc biến m_player = rỗng thì return lại toàn bộ câu lệnh bên dưới
-           
+        //if (m_rb == null || m_player == null) return;  // nếu mà rb khác rỗng thì sẽ thay đổi vận tốc hoặc biến m_player = rỗng thì return lại toàn bộ câu lệnh bên dưới
+
+        if (IscomponentNull()) return;
        
-           
-        
         // kiểm tra khoảng cách giữa 2 vector của 2 vị trí của con nhân vật và con quái có bằng cái khoảng cách atkDistance không ( ý là có tới vị trí cho sẳn để chuyển sang tấn công hay chưa)
         if(Vector2.Distance(m_player.transform.position,transform.position) <= atkDistance)
         {
