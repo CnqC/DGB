@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &263386801
 Transform:
   m_ObjectHideFlags: 0
@@ -83,6 +83,7 @@ GameObject:
   - component: {fileID: 707843113566818252}
   - component: {fileID: -4410944921382984519}
   - component: {fileID: -5101265467191378889}
+  - component: {fileID: 1570942133}
   m_Layer: 0
   m_Name: Hero01
   m_TagString: Untagged
@@ -226,3 +227,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1203176, y: 2.0123396}
   m_EdgeRadius: 0
+--- !u!114 &1570942133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707843113566818253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3de24b1c64c73c4886ca3891345962a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atkRate: 0.6
