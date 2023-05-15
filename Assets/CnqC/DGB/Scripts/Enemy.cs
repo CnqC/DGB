@@ -57,5 +57,15 @@ public class Enemy : MonoBehaviour, IcomponentChecking
         {
             m_rb.velocity = new Vector2(-speed, m_rb.velocity.y); // giá trị y giữ nguyên giá trị của Rg2D ý là lực hút trái đất
         }
+
+    }
+
+    public void Die()
+    {
+        if (IscomponentNull()) return;
+
+        m_anim.SetTrigger(Const.DEAD_ANIM); // va chạm chuyển thành animation dead
+        m_rb.velocity = Vector2.zero;
+        gameObject.layer = LayerMask.NameToLayer(Const.DEAD_LAYER); // chuyển layer sang dead để k còn bắt va chạm ( vào Edit -> ProjectSetting để tắt va chạm của layer Dead với các layer khác)
     }
 }
