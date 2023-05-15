@@ -10,9 +10,14 @@ public class Enemy : MonoBehaviour, IcomponentChecking
     public float atkDistance; // khoảng cách mà enemy tấn công player
 
     
+    private bool m_isDead; // ktra là quái đã chết chưa
+
+    private GameManager m_gm;
     private Player m_player;
     private Animator m_anim;
     private Rigidbody2D m_rb; // để những con quái di chuyển tới con hero thì phải thay đổi vận tốc của nó 
+
+    
 
     public bool IscomponentNull()
     {
@@ -28,6 +33,8 @@ public class Enemy : MonoBehaviour, IcomponentChecking
         // tìm kiếm trên gameScence của chúng ta có 1 đói tượng game tên là Player, và gán giá trị đó cho m_player
         // ý là truy cập tới nhân vật hiện đang có trên scence  ở ngoài Hierachy ở Unity
         // vào truy cập tới phần script của player được add vào nhân vật đó
+
+        m_gm = FindObjectOfType<GameManager>();
     }
 
     // Start is called before the first frame update
@@ -62,10 +69,16 @@ public class Enemy : MonoBehaviour, IcomponentChecking
 
     public void Die()
     {
-        if (IscomponentNull()) return;
+        if (IscomponentNull() || m_isDead) return; // m_isDead là check xem quái chết chưa, nếu chưa chết thì chạy code dưới
 
+        m_isDead = true;
         m_anim.SetTrigger(Const.DEAD_ANIM); // va chạm chuyển thành animation dead
         m_rb.velocity = Vector2.zero;
         gameObject.layer = LayerMask.NameToLayer(Const.DEAD_LAYER); // chuyển layer sang dead để k còn bắt va chạm ( vào Edit -> ProjectSetting để tắt va chạm của layer Dead với các layer khác)
+
+        if (m_gm)
+            m_gm.Score++;
+
+        Destroy(gameObject, 2f); // pha hủy con nhân vật sau 2f
     }
 }

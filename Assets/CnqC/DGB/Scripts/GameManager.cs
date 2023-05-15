@@ -7,8 +7,11 @@ public class GameManager : MonoBehaviour // tự động tạo ra các con quái
     public float spawnTime; // thời gian để tạo ra quái
     public Enemy[] enemyPrefabs; // tập hợp các con quái trong Prefabs
 
+    private int m_score; // set/get --> ctrl . ( private bởi vì k muốn bên ngoài có thể sửa điểm số)
     private bool m_isGameOver;
 
+
+    public int Score { get => m_score; set => m_score = value; }
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +23,7 @@ public class GameManager : MonoBehaviour // tự động tạo ra các con quái
 
     // Update is called once per frame
     void Update()
-    {
+    { 
         
     }
 
