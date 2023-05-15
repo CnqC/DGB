@@ -73,7 +73,6 @@ namespace CnqC.DGB
             if (col.CompareTag(Const.ENEMY_WEAPON_TAG) && !m_isDead ) // so sánh xem là có tag nào mà enemy nó va chạm có tên là Enemy weapon không, nếu có thì chạy 
             {
                 m_anim.SetTrigger(Const.DEAD_ANIM); // xử lý va chạm trigger giữa player với lại EnemyWeapon --> chuyển thành animation Dead
-                gameObject.layer = LayerMask.NameToLayer(Const.DEAD_LAYER);
                 m_isDead = true; 
             }
         }
