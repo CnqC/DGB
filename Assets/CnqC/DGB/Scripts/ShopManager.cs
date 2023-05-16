@@ -12,7 +12,7 @@ public class ShopManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Init(); 
     }
 
     private void Init() // khởi tạo các dữ liệu máy ban đầu được lưu dưới shop
