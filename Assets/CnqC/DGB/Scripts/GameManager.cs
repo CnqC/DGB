@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour // tự động tạo ra các con quái
     public int Score { get => m_score; set => m_score = value; }
     // Start is called before the first frame update
     void Start()
-    {
+    { 
 
         // để gọi 1 Coroutine thì ta phải gọi
 
