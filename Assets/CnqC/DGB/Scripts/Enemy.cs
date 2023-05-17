@@ -8,7 +8,8 @@ public class Enemy : MonoBehaviour, IcomponentChecking
 {
     public float speed;
     public float atkDistance; // khoảng cách mà enemy tấn công player
-
+    public int minCoinBonus;
+    public int maxCoinBonus;
     
     private bool m_isDead; // ktra là quái đã chết chưa
 
@@ -21,7 +22,9 @@ public class Enemy : MonoBehaviour, IcomponentChecking
 
     public bool IscomponentNull()
     {
-        return m_anim == null || m_player == null || m_rb == null;
+        
+        return m_anim == null || m_player == null || m_rb == null || m_gm == null ; // kr các thành phầ này giúp game k bị null khi chạy
+    
     }
 
     private void Awake()
@@ -66,7 +69,7 @@ public class Enemy : MonoBehaviour, IcomponentChecking
         }
 
     }
-
+ 
     public void Die()
     {
         if (IscomponentNull() || m_isDead) return; // m_isDead là check xem quái chết chưa, nếu chưa chết thì chạy code dưới
@@ -76,8 +79,12 @@ public class Enemy : MonoBehaviour, IcomponentChecking
         m_rb.velocity = Vector2.zero;
         gameObject.layer = LayerMask.NameToLayer(Const.DEAD_LAYER); // chuyển layer sang dead để k còn bắt va chạm ( vào Edit -> ProjectSetting để tắt va chạm của layer Dead với các layer khác)
 
-        if (m_gm)
             m_gm.Score++;
+
+        // khi con quái chết sẽ lấy 1 giá trị giữa khoảng minCoinBonus - MaxCoinBonux
+        int bonus = Random.Range(minCoinBonus, maxCoinBonus);
+
+        Pref.coins += bonus; // lưu giá trị bonus đó xuống mày người chơi khi giết 1 quái
 
         Destroy(gameObject, 2f); // pha hủy con nhân vật sau 2f
     }
