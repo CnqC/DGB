@@ -24,7 +24,7 @@ public class ShopManager : MonoBehaviour
             var item = items[i]; // lấy ra những phần tử ở trong mảng Item
 
             string dataKey = Const.PLAYER_PREFIX_PREF + i; // key cua PlayerPrefix nằm trong Script Const, mình đặt 1 chuỗi "Player_"
-                                                           // player_0, player_1, player_2
+                                                           //  player_0, player_1, player_2
                                                            // lưu lại những trái thái của các hero tách biệt ra, để check là các trạng thái đó đã mở khóa hay chưa
 
             if (item != null)
