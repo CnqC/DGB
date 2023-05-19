@@ -14,11 +14,13 @@ namespace CnqC.DGB
         private float m_curAtkRate; // lưu lại giá trị của biến atkRate và giảm dần theo thời gian
         private bool m_isAttacked; // ktra xem đã tấn công chưa
         private Animator m_anim;
+        private GameManager m_gm;
 
         private void Awake()
         {
             m_anim = GetComponent<Animator>();
             m_curAtkRate = atkRate;
+            m_gm = FindObjectOfType<GameManager>();
         }
 
         // Start is called before the first frame update
@@ -29,7 +31,7 @@ namespace CnqC.DGB
 
         public bool IscomponentNull()
         {
-            return m_anim == null;
+            return m_anim == null || m_gm == null;
         }
 
         // Update is called once per frame
@@ -75,6 +77,8 @@ namespace CnqC.DGB
                 m_anim.SetTrigger(Const.DEAD_ANIM); // xử lý va chạm trigger giữa player với lại EnemyWeapon --> chuyển thành animation Dead
                 m_isDead = true;
                 gameObject.layer = LayerMask.NameToLayer(Const.DEAD_LAYER);
+
+                m_gm.GameOver(); // player bị dánh chết thì chuyển sang hộp thoại GameOver.
             }
         }
     }

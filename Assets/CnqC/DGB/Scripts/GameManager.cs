@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour,IcomponentChecking // tự động tạ
     public float spawnTime; // thời gian để tạo ra quái
     public Enemy[] enemyPrefabs; // tập hợp các con quái trong Prefabs
 
-    public GUIManager guiMng; // tham cheiu61 tới scirpt Guimanager
+    public GUIManager guiMng; // tham chiếu  tới scirpt Guimanager
 
     private int m_score; // set/get --> ctrl . ( private bởi vì k muốn bên ngoài có thể sửa điểm số)
     private bool m_isGameOver;
@@ -43,12 +43,18 @@ public class GameManager : MonoBehaviour,IcomponentChecking // tự động tạ
         guiMng.UpdateGamePlayCoins();
     }
 
-    // Update is called once per frame
-    void Update()
-    { 
-        
-    }
+    public void GameOver()
+    {
+        if (m_isGameOver) return; //nếu game kết thúc rồi thì k chạy câu lệnh dưới, nếu k thì thực hiện
 
+        Pref.bestScore = m_score; // lưu lại điểm số cao nhất của người chơi
+
+        //hiện thị hộp thoại GameOver
+        if(guiMng.gameOverDiaLog) // biến gameOverDialoG trong guiMng khác null thì chạy
+        guiMng.gameOverDiaLog.Show(true);
+
+
+    }
     // tạo ra 1 coroutine
     IEnumerator SpawnEnemy()
     {
