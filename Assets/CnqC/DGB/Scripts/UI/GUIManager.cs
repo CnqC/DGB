@@ -35,4 +35,12 @@ public class GUIManager : MonoBehaviour
             mainCoinTxt.text = Pref.coins.ToString();
         // nếu như biến mainCointxt khác rỗng thì sẽ giá trị text của nó sẽ bằng số coins dưới máy người dùng ép về dạng string cho nó bằng với dạng text.
     }
+
+    public void UpdateGamePlayCoins()
+    {
+        if (gameplayCoinTxt)
+            gameplayCoinTxt.text = Pref.coins.ToString();
+        // nếu như biến gameplayCoinTxt khác rỗng thì sẽ giá trị text của nó sẽ bằng số coins dưới máy người dùng ép về dạng string cho nó bằng với dạng text.
+    } 
+
 }   

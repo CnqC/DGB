@@ -2,23 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 using CnqC.DGB;
-public class GameManager : MonoBehaviour // tự động tạo ra các con quái
+public class GameManager : MonoBehaviour,IcomponentChecking // tự động tạo ra các con quái
 {
     public float spawnTime; // thời gian để tạo ra quái
     public Enemy[] enemyPrefabs; // tập hợp các con quái trong Prefabs
+
+    public GUIManager guiMng; // tham cheiu61 tới scirpt Guimanager
 
     private int m_score; // set/get --> ctrl . ( private bởi vì k muốn bên ngoài có thể sửa điểm số)
     private bool m_isGameOver;
 
 
+
+
     public int Score { get => m_score; set => m_score = value; }
     // Start is called before the first frame update
     void Start()
-    { 
+    {
 
         // để gọi 1 Coroutine thì ta phải gọi
 
+      
+
+        if (IscomponentNull()) return;
+
+        guiMng.ShowGameGUI(false); // khi người chơi mới vảo thì ta sẽ show cái homeGui và ẩn cái gameGUI 
+
+        // cập nhập lại số coins ng chơi nhận được
+        guiMng.UpdateMainCoins();
+    }
+
+    public void PlayGame() 
+    {
+        guiMng.ShowGameGUI(true);
+
         StartCoroutine(SpawnEnemy());
+
+        // cập nhập số vàng ng chơi ở gameGUI
+
+        guiMng.UpdateGamePlayCoins();
     }
 
     // Update is called once per frame
@@ -46,6 +68,11 @@ public class GameManager : MonoBehaviour // tự động tạo ra các con quái
                 }
             }
             yield return new WaitForSeconds(spawnTime);
-        }
+        }   
+    }
+
+    public bool IscomponentNull()
+    {
+        return guiMng == null;
     }
 }

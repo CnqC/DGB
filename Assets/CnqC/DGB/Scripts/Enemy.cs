@@ -86,6 +86,10 @@ public class Enemy : MonoBehaviour, IcomponentChecking
 
         Pref.coins += bonus; // lưu giá trị bonus đó xuống mày người chơi khi giết 1 quái
 
+        // cập nhập coins khi người hơi giết 1 con quái
+        if (m_gm.guiMng) // ktra nếu biến m_gm có biến guiMng thì sẽ chạy code dưới
+            m_gm.guiMng.UpdateGamePlayCoins();
+
         Destroy(gameObject, 2f); // pha hủy con nhân vật sau 2f
     }
 }

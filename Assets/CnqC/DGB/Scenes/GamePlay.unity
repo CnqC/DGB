@@ -907,6 +907,7 @@ MonoBehaviour:
   - {fileID: 1551074548, guid: 42beec8acc73a2a44acd19a6eb1e7908, type: 3}
   - {fileID: 871429889, guid: d3ec3669988f3a94097feb32ffbf0539, type: 3}
   - {fileID: 1209987539, guid: b198416315130434abf8ac4bc66fa8b8, type: 3}
+  guiMng: {fileID: 972503733}
 --- !u!4 &233062666
 Transform:
   m_ObjectHideFlags: 0
@@ -3794,7 +3795,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1208494345}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 233062665}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: PlayGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1208494345
 MonoBehaviour:
   m_ObjectHideFlags: 0
