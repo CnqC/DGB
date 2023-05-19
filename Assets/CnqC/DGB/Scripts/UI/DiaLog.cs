@@ -18,10 +18,10 @@ public class DiaLog : MonoBehaviour
     
     public virtual void UpdateDiaLog(string title , string content)
     {
-        if (titleTxt)
+        if (titleTxt) // nếu biến này khác rỗng thì sẽ gán giá trị của text của titleTxt cho biến string title trong hàm 
             titleTxt.text = title;
 
-        if (contentTxt)
+        if (contentTxt)// nếu biến này khác rỗng thì sẽ gán giá trị của text của contentTxt cho biến string content trong hàm
             contentTxt.text = content;
     }
 
