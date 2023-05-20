@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour,IcomponentChecking // tự động tạ
         if (IscomponentNull()) return;
 
         guiMng.ShowGameGUI(false); // khi người chơi mới vảo thì ta sẽ show cái homeGui và ẩn cái gameGUI 
+                                   // hiện lên cái homeGUi cho người chơi ấn Play hay tác vụ khác
 
         // cập nhập lại số coins ng chơi nhận được
         guiMng.UpdateMainCoins();
@@ -34,9 +35,9 @@ public class GameManager : MonoBehaviour,IcomponentChecking // tự động tạ
 
     public void PlayGame() 
     {
-        guiMng.ShowGameGUI(true);
+        guiMng.ShowGameGUI(true); // là hiện cái GameGUi đi và ẩn cái HOmeGUi và bắt đầu game
 
-        StartCoroutine(SpawnEnemy());
+        StartCoroutine(SpawnEnemy()); // spawn lính
 
         // cập nhập số vàng ng chơi ở gameGUI
 
@@ -52,7 +53,7 @@ public class GameManager : MonoBehaviour,IcomponentChecking // tự động tạ
         //hiện thị hộp thoại GameOver
         if(guiMng.gameOverDiaLog) // biến gameOverDialoG trong guiMng khác null thì chạy
         guiMng.gameOverDiaLog.Show(true);
-
+        // biến guiMng tham chiếu tới biến gameOverDiaLog ( kế thừa lớp DiaLog), gọi hàm Show( biến bool true) để hiện ra hộp thoại GameOver
 
     }
     // tạo ra 1 coroutine

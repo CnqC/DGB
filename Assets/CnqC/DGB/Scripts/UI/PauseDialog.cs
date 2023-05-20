@@ -1,19 +1,36 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CnqC.DGB;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement; // quản lý các scene
 
-public class PauseDialog : MonoBehaviour
+public class PauseDialog : DiaLog
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Show(bool isShow)
     {
-        
+        Time.timeScale = 0f; // dừng tất cả thời gian lại
+
+        base.Show(isShow);
     }
 
-    // Update is called once per frame
-    void Update()
+     
+    public void Resume()
     {
+        Close();
+
+    }
+
+    public void Replay()
+    {
+        Close();
+
+        SceneManager.LoadScene(Const.GAMEPLAY_SCENE); // chuyển sang scence GamePlay trong unity.
+    }
         
+    public override void Close()
+    {
+        Time.timeScale = 1f;// đưa timeScale lại bình thường
+        base.Close();   
     }
 }

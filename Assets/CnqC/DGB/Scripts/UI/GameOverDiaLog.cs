@@ -10,7 +10,7 @@ public class GameOverDiaLog : DiaLog
 {
     public TextMeshProUGUI bestScoreTxt;
 
-    public override void Show(bool isShow)
+    public override void Show(bool isShow) // viết đè lên hàm ảo Show của lớp cha DiaLog
     {
         base.Show(isShow);
 
