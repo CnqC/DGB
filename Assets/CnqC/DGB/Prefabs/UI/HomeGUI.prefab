@@ -3079,6 +3079,7 @@ GameObject:
   - component: {fileID: 584156809515188010}
   - component: {fileID: 584156809515188012}
   - component: {fileID: 584156809515188013}
+  - component: {fileID: 2376670901718956418}
   m_Layer: 5
   m_Name: ShopDiaLog
   m_TagString: Untagged
@@ -3145,6 +3146,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2376670901718956418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584156809515188011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 032dac497476f93428c31740bf908027, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  titleTxt: {fileID: 0}
+  contentTxt: {fileID: 0}
+  gridRoot: {fileID: 584156809221291058}
+  itemUIPreFabs: {fileID: 584156809711185153}
 --- !u!1 &584156809524464228
 GameObject:
   m_ObjectHideFlags: 0
@@ -3265,7 +3282,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 584156809524464233}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2376670901718956418}
+        m_TargetAssemblyTypeName: ShopDiaLog, Assembly-CSharp
+        m_MethodName: Show
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &584156809583614104
 GameObject:
   m_ObjectHideFlags: 0
@@ -3516,10 +3545,10 @@ RectTransform:
   m_Father: {fileID: 584156809221291058}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 120, y: -160}
-  m_SizeDelta: {x: 220, y: 300}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &584156809711185180
 CanvasRenderer:

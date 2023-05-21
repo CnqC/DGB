@@ -27,10 +27,11 @@ public class ShopItemUI : MonoBehaviour
         // ktra hero có cái chỉ số trong mảng các hero đã được mở khóa hay chưa
         bool isUnlocked = Pref.GetBool(Const.PLAYER_PREFIX_PREF + itemIdx);
 
-        if (isUnlocked)
+        if (isUnlocked) // isUnlocked == true
         {
 
-            if(Pref.curPlayeriD == itemIdx)   // các chỉ số ( số thứ tự) mà các hero đang chọn hoặc đang chơi = chỉ số hero ở trong mảng ShopItem
+            if(Pref.curPlayeriD == itemIdx)   
+                // các chỉ số ( số thứ tự) mà các hero đang chọn hoặc đang chơi = chỉ số hero ở trong mảng ShopItem
                 // hero đã mở khóa        
             {
                 if (priceTxt)
@@ -45,7 +46,7 @@ public class ShopItemUI : MonoBehaviour
         else // nếu mà hero chưa được unlock thì sẽ cập nhập lại giá tiền
         {
             if (priceTxt)
-                priceTxt.text = item.ToString();
+                priceTxt.text = item.price.ToString();
         }
 
     }

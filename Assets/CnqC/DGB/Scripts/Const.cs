@@ -21,7 +21,7 @@ public class Const
 
     // Tạo ra các hằng số cho các KEY của playerpref -- lưu vào xuống máy người dùng ( 4 key)
     public const string BEST_SCORE_PREF    = "best_score";
-    public const string PLAYER_PREFIX_PREF = "player_";
+    public const string PLAYER_PREFIX_PREF = "player_";  // key của Shop
     public const string CUR_PLAYER_ID_PREF = "cur_player_id";
     public const string COINS_PREF         = "coins";
 
