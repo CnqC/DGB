@@ -68,6 +68,15 @@ public class ShopDiaLog : DiaLog, IcomponentChecking
                                         // biến item là biến var đã được gọi ở trong vòng lặp for
     // Ta có thể gọi được hàm Update UI ở bên script ShopItemUI, bởi vì ở ngoài inspector của đối tượng ShopDiaLog, ta có kéo đối tượng ShopItem vào trong biến itemUIPrefabs
     // mà trong đối tượng ShopItem ta đã có add component Script ShopItemUI --> vì thế ta có thể dùng phương thức của script ShopItemUI ngay trong script Shop DiaLog
+        
+            if(itemUIClone.btn)
+            {
+                itemUIClone.btn.onClick.RemoveAllListeners(); // xóa bỏ tất cả những cái sự kiện sau khi click của biến itemUIclone trong Script ShopButtonUI đã vẽ ra
+
+                // add sự kiện mới
+
+                itemUIClone.btn.onClick.AddListener(() => ItemEvent(item,idx));
+            }
         }
     }  
     
@@ -87,5 +96,61 @@ public class ShopDiaLog : DiaLog, IcomponentChecking
                                             // cái gameObject là con của grid group
         }
 
+    }
+
+
+    // viết sự kiện khi ấn vào button của hero sẽ ra mua hero
+
+    private void ItemEvent(ShopItem item, int itemidx)
+    {
+        if (item == null) return;
+
+        // kiểm tra xem hero đã unlock chưa
+        bool isUnlocked = Pref.GetBool(Const.PLAYER_PREFIX_PREF + itemidx);
+
+        // lấy ra trạng thái của hero trong shop mà ta đã lưu dưới máy ng dùng
+
+        if (isUnlocked) // nếu đã unlock
+        {
+            // nếu item hiện tại mà người dùng click vào đó có cái Id = với cái Id con hero hiện tại mà chúng ta đang chọn --> sẽ không làm gì
+            if (itemidx == Pref.curPlayeriD) return; // người chơi bấm chọn với con hero mà họ đã sở hưu --> ta sẽ không làm gì 
+
+            // nếu mà không chọn vào
+            Pref.curPlayeriD = itemidx; // việc mà ta ấn hero tại shop và nó hiện ở ngoài dù ta relay -> play lại vẫn hiện là do
+                                        //  Pref.curPlayeriD lưu xuống máy người dùng thông qua biến itemidx ( là chỉ số thứ tự của hero trong ShopItem[] của ShopItem ( list các hero) của DataStruct 
+
+
+
+            UpdateUI(); // cập nhập lại Shop
+
+
+        }
+        else if(Pref.coins >= item.price) // nếu tiền lưu ở trong máy người dùng lớn hoặc bằng với giá coin của nhân vật
+            // nếu mà k unlock
+        {
+            // trừ số vàng ng chơi đang có, sẽ trừ đi số lượng tiền = giá tiền hero
+            Pref.coins -= item.price;
+
+            // khi mua con nhân vật đó thì sẽ set trạng thái của nó là Unlocked
+
+            Pref.SetBool(Const.PLAYER_PREFIX_PREF + itemidx, true); // cập nhập trạng thái của hero trong shop là đã mở --> chyển sang active / owner
+
+            //xét lại cái ID của hero hiện tại mà người dùng sử dụng = với chỉ số itemidx( chỉ số mà hero mà người chơi đã click mua vào trong shop)
+            Pref.curPlayeriD = itemidx;
+
+           
+
+            // cập nhập UI
+            UpdateUI();
+
+            // cập nhập số vàng người chơi còn lại trên main
+
+                if (m_gm.guiMng)
+                m_gm.guiMng.UpdateMainCoins();
+        }
+        else
+        {
+            Debug.Log(" You dont have enough money");
+        }
     }
 }

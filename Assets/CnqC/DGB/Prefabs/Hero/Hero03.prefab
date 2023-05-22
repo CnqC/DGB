@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3de24b1c64c73c4886ca3891345962a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atkRate: 1.5
+  atkRate: 1.8
 --- !u!1 &1213590579295806477
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,7 +197,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1213590579295806477}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.95, y: -1.18, z: 0}
+  m_LocalPosition: {x: -2.19, y: -1.13, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -240,7 +240,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.42
+  m_Radius: 0.7
 --- !u!114 &1533269391
 MonoBehaviour:
   m_ObjectHideFlags: 0
