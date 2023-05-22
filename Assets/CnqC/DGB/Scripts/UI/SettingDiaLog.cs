@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CnqC.DGB;
+using UnityEngine.UI;
+
 
 public class SettingDiaLog : MonoBehaviour
 {

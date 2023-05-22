@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour,IcomponentChecking // tự động tạ
 
     public GUIManager guiMng; // tham chiếu  tới scirpt Guimanager
     public ShopManager shopMng; // tham chiếu tới ShopManager
-
+    public AudioControler audioControler; // tham chiếu tới AudioControler
 
     private int m_score; // set/get --> ctrl . ( private bởi vì k muốn bên ngoài có thể sửa điểm số)
     private bool m_isGameOver;
@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour,IcomponentChecking // tự động tạ
 
     public bool IscomponentNull()
     {
-        return guiMng == null || shopMng == null;
+        return guiMng == null || shopMng == null || audioControler == null;
     }
 
     public int Score { get => m_score; set => m_score = value; }
@@ -41,16 +41,23 @@ public class GameManager : MonoBehaviour,IcomponentChecking // tự động tạ
 
     public void PlayGame() 
     {
+
+        if (IscomponentNull()) return;
+
         guiMng.ShowGameGUI(true); // là hiện cái GameGUi đi và ẩn cái HOmeGUi và bắt đầu game
 
         // mỗi khi vào game sẽ gọi phương thức, chứ k phải là mua mới hiện( nếu mà mua mới hiện thì ta add phương thức này vào script ShopDiaLOg ở mục mua hero
-        ActivePlayer(); 
+        ActivePlayer();
+         
+        audioControler.PlayBgm();
 
         StartCoroutine(SpawnEnemy()); // spawn lính
 
         // cập nhập số vàng ng chơi ở gameGUI
 
         guiMng.UpdateGamePlayCoins();
+
+       
 
        
     }

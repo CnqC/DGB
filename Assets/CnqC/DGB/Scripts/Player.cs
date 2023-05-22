@@ -62,8 +62,14 @@ namespace CnqC.DGB
 
         }
 
-        public void ResetAtkAnim()
+        public void PlayAtkSound() // khi ma hero tấn công sẽ có tiếng
         {
+            if (m_gm.audioControler)
+                m_gm.audioControler.PlaySound(m_gm.audioControler.playerAtk); // play cái sound player Atk trong cái playerControler
+        }
+
+        public void ResetAtkAnim()
+        {                                             
             if (IscomponentNull()) return;
                 m_anim.SetBool(Const.ATTACK_ANIM, false);
         }
