@@ -14,7 +14,7 @@ public class SettingDiaLog : DiaLog, IcomponentChecking
 
     public bool IscomponentNull()
     {
-       return  m_auCtr == null || musicSilder == null || soundSilder ==null;
+       return  m_auCtr == null || musicSilder == null || soundSilder == null;
     }
 
     public override void Show(bool isShow)
@@ -25,8 +25,15 @@ public class SettingDiaLog : DiaLog, IcomponentChecking
 
         if (IscomponentNull()) return;
 
+        // khi mở cái setting này lại thì nó sẽ tự động lưu lại các thông số cũ mà người chơi đã lưu.
 
+        //musicSilder.value = Pref.musicVol;
 
+        
+
+        //soundSilder.value = Pref.soundVol;
+
+         
     }
 
     public void OnMusicChange(float value) // value = giá trị của thằng slider
@@ -36,7 +43,12 @@ public class SettingDiaLog : DiaLog, IcomponentChecking
         // cập nhập lại volume ở trong cái musicAus của thằng audioCOntroler 
 
         m_auCtr.musicVol = value;
-        m_auCtr.musicAus.volume = value; 
+        m_auCtr.musicAus.volume = value;
+
+        // lại lại Music Volume vào Pref để lưu lại những sử dụng của người dùng
+        Pref.musicVol = value;
+      
+      
     }
 
     public void OnSoundChange(float value)
@@ -46,5 +58,8 @@ public class SettingDiaLog : DiaLog, IcomponentChecking
         m_auCtr.soundVol = value;
         m_auCtr.soundAus.volume = value;
 
+
+        // lưu lại setting soundVolume xuống máy người chơi
+        Pref.soundVol = value;
     }
 }

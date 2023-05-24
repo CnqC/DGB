@@ -28,10 +28,21 @@ public class AudioControler : MonoBehaviour
     public AudioClip gameOver;
     public AudioClip[] Bgms; // phát ngẫu nhiên các bài nhạc trong mảng
 
-    public void PlaySound(AudioClip[] sounds, AudioSource aus = null) // 1 mảng chứa file âm thanh
-                                                   // giá trị ban đầu = null
 
-            
+    private void Start()
+    {
+        if (musicAus == null || soundAus == null || musicAus == null) ;
+
+        musicVol = Pref.musicVol;
+        soundVol = Pref.soundVol;
+
+        musicAus.volume = musicVol;
+        soundAus.volume = soundVol;
+
+    }
+
+    public void PlaySound(AudioClip[] sounds, AudioSource aus = null) // 1 mảng chứa file âm thanh
+                                                   // giá trị ban đầu = null  
     {
         // phát ra âm thanh trong game
 
