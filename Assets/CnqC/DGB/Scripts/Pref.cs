@@ -35,7 +35,7 @@ public static class Pref
     public static float musicVol
     {
         set => PlayerPrefs.SetFloat(Const.MUSIC_VOL_PREF, value);
-        get => PlayerPrefs.GetFloat(Const.SOUND_VOL_PREF, 0.3f);
+        get => PlayerPrefs.GetFloat(Const.MUSIC_VOL_PREF, 0.3f);
     }
 
     public static float soundVol
