@@ -27,11 +27,11 @@ public class SettingDiaLog : DiaLog, IcomponentChecking
 
         // khi mở cái setting này lại thì nó sẽ tự động lưu lại các thông số cũ mà người chơi đã lưu.
 
-        //musicSilder.value = Pref.musicVol;
+        musicSilder.value = Pref.musicVol;
 
         
 
-        //soundSilder.value = Pref.soundVol;
+        soundSilder.value = Pref.soundVol;
 
          
     }
