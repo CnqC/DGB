@@ -18,7 +18,7 @@ public static class Pref
 
         get => PlayerPrefs.GetInt(Const.BEST_SCORE_PREF, 0); // lấy ra điểm số cao nhất của ng dùng
 
-    }
+    }   
     public static int curPlayeriD
     {
         set => PlayerPrefs.SetInt(Const.CUR_PLAYER_ID_PREF, value);

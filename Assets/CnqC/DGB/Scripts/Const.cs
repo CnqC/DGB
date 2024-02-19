@@ -5,6 +5,9 @@ using CnqC.DGB;
 
 public class Const
 {
+    // hằng là 1 biến lưu giá trị không thay đổi trong suốt chương trình
+    // bắt buộc phải khởi tạo giá trị khi khai báo 
+
     // Tạo ra các hằng số cho TAG
     public const string PLAYER_TAG = "Player";
     public const string ENEMY_TAG  = "Enemy";
